@@ -1,0 +1,49 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+#canvas {
+    z-index: 1;
+}
+
+#spin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    background-color: rgb(255, 114, 138);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+#prizePopup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 3;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#prizePopupText {
+    background-color: rgb(255, 114, 138);
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    font-weight: bold;
+}
