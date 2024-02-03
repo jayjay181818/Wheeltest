@@ -12,23 +12,33 @@ document.addEventListener('DOMContentLoaded', function() {
     const angle = Math.PI * 2 / totalPrizes;
     let currentRotation = 0;
 
+    function adjustCanvasSize() {
+        // Determine the maximum size of the canvas based on the viewport, ensuring it's fully visible
+        const maxWidth = window.innerWidth * 0.8; // 80% of viewport width
+        const maxHeight = window.innerHeight * 0.8; // 80% of viewport height
+        const size = Math.min(maxWidth, maxHeight, 500); // Ensure the size does not exceed 500px or the viewport limits
+        canvas.width = size;
+        canvas.height = size;
+    }
+
     function drawWheel() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         prizes.forEach((prize, index) => {
             ctx.fillStyle = colors[index];
             ctx.beginPath();
-            ctx.moveTo(250, 250);
-            ctx.arc(250, 250, 250, index * angle + currentRotation, (index + 1) * angle + currentRotation);
+            ctx.moveTo(canvas.width / 2, canvas.height / 2);
+            ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width / 2, index * angle + currentRotation, (index + 1) * angle + currentRotation);
             ctx.closePath();
             ctx.fill();
 
+            // Adjust text positioning and size for better visibility
             ctx.fillStyle = 'black';
-            ctx.font = 'bold 14px Helvetica, Arial';
+            ctx.font = `bold ${canvas.width / 25}px Helvetica, Arial`; // Dynamic font size based on canvas size
             ctx.save();
-            ctx.translate(250, 250);
+            ctx.translate(canvas.width / 2, canvas.height / 2);
             ctx.rotate(index * angle + angle / 2 + currentRotation);
             ctx.textAlign = 'right';
-            ctx.fillText(prize, 230, 0);
+            ctx.fillText(prize, canvas.width / 2 - 20, 0); // Adjust text position based on canvas size
             ctx.restore();
         });
 
@@ -38,9 +48,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function drawIndicator() {
         ctx.fillStyle = 'black';
         ctx.beginPath();
-        ctx.moveTo(245, 0);
-        ctx.lineTo(255, 0);
-        ctx.lineTo(250, 20);
+        ctx.moveTo(canvas.width / 2 - 5, 0);
+        ctx.lineTo(canvas.width / 2 + 5, 0);
+        ctx.lineTo(canvas.width / 2, 20); // Adjust indicator size based on canvas size
         ctx.closePath();
         ctx.fill();
     }
@@ -79,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function displayPrize(prizeIndex) {
-        prizePopupText.textContent = `Beta, tribute me now... ${prizes[prizeIndex]}`;
+        prizePopupText.textContent = `Congratulations! You won ${prizes[prizeIndex]}`;
         prizePopup.style.display = "flex";
     }
 
@@ -93,5 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
         prizePopup.style.display = 'none';
     });
 
-    drawWheel(); // Initial draw of the wheel
+    window.addEventListener('resize', adjustCanvasSize);
+    adjustCanvasSize(); // Adjust the canvas size initially
+    drawWheel(); // Draw the wheel initially
 });

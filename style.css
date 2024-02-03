@@ -8,6 +8,8 @@ body {
 
 #canvas {
     z-index: 1;
+    max-width: 100%;
+    height: auto;
 }
 
 #spin {
@@ -46,4 +48,15 @@ body {
     padding: 20px;
     border-radius: 10px;
     font-weight: bold;
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    #spin {
+        top: auto;
+        bottom: 10%;
+        transform: translate(-50%, -10%);
+    }
 }
