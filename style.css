@@ -6,36 +6,33 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #f0f0f0;
     font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
 }
 
 .game-container {
-    position: relative;
+    max-width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
-h2 {
-    color: #333;
-    margin-bottom: 20px;
-}
-
-#canvas {
+canvas {
+    max-width: 100%;
+    max-height: 80vh;
     border: 1px solid #ddd;
-    margin-bottom: 20px; /* Space between the canvas and the spin button */
 }
 
 #spin {
+    margin-top: 20px;
     padding: 10px 20px;
-    font-size: 1em; /* Adjust based on your design */
+    font-size: 1em;
     background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: top 0.2s, left 0.2s; /* Smooth transition for resizing */
 }
 
 #prizePopup {
