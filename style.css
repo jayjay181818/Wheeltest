@@ -1,31 +1,41 @@
-body {
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: hsl(0, 0%, 46%);
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.game-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 20px;
 }
 
 #canvas {
-    z-index: 1;
-    max-width: 100%;
-    height: auto;
+    border: 1px solid #ddd;
+    margin-bottom: 20px; /* Space between the canvas and the spin button */
 }
 
 #spin {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-    background-color: rgb(255, 114, 138);
-    border: none;
-    color: white;
     padding: 10px 20px;
-    font-size: 16px;
+    font-size: 1em; /* Adjust based on your design */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    border-radius: 20px;
-    font-weight: bold;
+    transition: top 0.2s, left 0.2s; /* Smooth transition for resizing */
 }
 
 #prizePopup {
@@ -35,28 +45,16 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.75);
-    z-index: 3;
+    background-color: rgba(0,0,0,0.4);
+    display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
 }
 
 #prizePopupText {
-    background-color: rgb(255, 114, 138);
+    background-color: white;
     color: black;
     padding: 20px;
     border-radius: 10px;
-    font-weight: bold;
-}
-
-@media only screen and (max-width: 768px) {
-    body {
-        flex-direction: column;
-    }
-    #spin {
-        top: auto;
-        bottom: 10%;
-        transform: translate(-50%, -10%);
-    }
+    font-size: 24px;
 }
