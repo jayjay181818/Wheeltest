@@ -1,3 +1,21 @@
+:root {
+    /* Warm Theme (Default) */
+    --bg-gradient-1: #1E3D59;
+    --bg-gradient-2: #2B4F71;
+    --primary-color: #FF6E6E;
+    --secondary-color: #FFC93C;
+    --accent-color: #FF9A3C;
+}
+
+[data-theme="vibrant"] {
+    /* Vibrant Theme */
+    --bg-gradient-1: #1A1A2E;
+    --bg-gradient-2: #16213E;
+    --primary-color: #4CAF50;
+    --secondary-color: #E91E63;
+    --accent-color: #FFC107;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,8 +25,31 @@
 
 body {
     min-height: 100vh;
-    background: linear-gradient(135deg, #1E3D59 0%, #2B4F71 100%);
+    background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 100%);
     color: #ffffff;
+}
+
+.header-top {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+
+.theme-toggle {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #ffffff;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .container {
@@ -30,7 +71,7 @@ h1 {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 0.5rem;
-    background: linear-gradient(45deg, #FF6E6E, #FFC93C);
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -75,7 +116,7 @@ h1 {
     font-size: 1.2rem;
     font-weight: 600;
     color: #ffffff;
-    background: linear-gradient(45deg, #FF6E6E, #FFC93C);
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -107,7 +148,7 @@ h1 {
 }
 
 .popup-content {
-    background: linear-gradient(135deg, #1E3D59 0%, #17314A 100%);
+    background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 100%);
     padding: 2.5rem;
     border-radius: 20px;
     text-align: center;
@@ -126,7 +167,7 @@ h1 {
     font-size: 2rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
-    background: linear-gradient(45deg, #FF6E6E, #FFC93C);
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -137,7 +178,7 @@ h1 {
     font-size: 1rem;
     font-weight: 600;
     color: #ffffff;
-    background: linear-gradient(45deg, #FFC93C, #FF6E6E);
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
     border: none;
     border-radius: 25px;
     cursor: pointer;

@@ -10,11 +10,35 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
+    const themes = {
+        warm: {
+            colors: ["#FF6E6E", "#FFC93C", "#FF9A3C", "#FF7C7C", "#FFB347", "#FF8066"],
+            name: "Warm Theme"
+        },
+        vibrant: {
+            colors: ["#4CAF50", "#E91E63", "#FFC107", "#2196F3", "#9C27B0", "#FF5722"],
+            name: "Vibrant Theme"
+        }
+    };
+
     const prizes = ["$100", "$25", "$50", "$75", "$100", "$150"];
-    const colors = ["#FF6E6E", "#FFC93C", "#FF9A3C", "#FF7C7C", "#FFB347", "#FF8066"];
     const totalPrizes = prizes.length;
     const angle = Math.PI * 2 / totalPrizes;
     let currentRotation = 0;
+    let currentTheme = localStorage.getItem('wheelTheme') || 'warm';
+    document.body.setAttribute('data-theme', currentTheme === 'vibrant' ? 'vibrant' : '');
+
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+        currentTheme = currentTheme === 'warm' ? 'vibrant' : 'warm';
+        localStorage.setItem('wheelTheme', currentTheme);
+        document.body.setAttribute('data-theme', currentTheme === 'vibrant' ? 'vibrant' : '');
+        themeToggle.textContent = `Switch to ${currentTheme === 'warm' ? 'Vibrant' : 'Warm'} Theme`;
+        drawWheel();
+    });
+    
+    // Set initial theme button text
+    themeToggle.textContent = `Switch to ${currentTheme === 'warm' ? 'Vibrant' : 'Warm'} Theme`;
 
     function adjustCanvasSize() {
         const maxWidth = window.innerWidth * 0.8;
@@ -31,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const endAngle = (index + 1) * angle + currentRotation;
 
             const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-            gradient.addColorStop(0, colors[index]);
+            gradient.addColorStop(0, themes[currentTheme].colors[index]);
             gradient.addColorStop(1, 'white');
             ctx.fillStyle = gradient;
             ctx.beginPath();
@@ -57,8 +81,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function drawIndicator() {
-        // Create a larger, more visible indicator
-        ctx.fillStyle = '#FF6B6B';
+        // Use theme color for indicator
+        ctx.fillStyle = themes[currentTheme].colors[0];
         ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
         ctx.shadowBlur = 5;
         ctx.beginPath();
