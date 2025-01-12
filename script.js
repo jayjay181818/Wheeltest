@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     const prizes = ["$100", "$25", "$50", "$75", "$100", "$150"];
-    const colors = ["#FFC300", "#FF5733", "#C70039", "#900C3F", "#581845", "#2ECC71"];
+    const colors = ["#FF6E6E", "#FFC93C", "#FF9A3C", "#FF7C7C", "#FFB347", "#FF8066"];
     const totalPrizes = prizes.length;
     const angle = Math.PI * 2 / totalPrizes;
     let currentRotation = 0;
