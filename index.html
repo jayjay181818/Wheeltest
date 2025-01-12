@@ -4,17 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spinning Wheel Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+        <header>
+            <h1>Spin & Win!</h1>
+            <p class="subtitle">Try your luck and win amazing prizes</p>
+        </header>
+        
+        <main class="game-container">
+            <div class="wheel-container">
+                <canvas id="canvas"></canvas>
+                <button id="spin" class="spin-button">Spin The Wheel!</button>
+            </div>
+        </main>
 
-<h1>Your Title Here</h1> <!-- Add your title text here -->
-<canvas id="canvas"></canvas>
-<button id="spin">Spin The Wheel!</button>
-<div id="prizePopup">
-    <strong id="prizePopupText"></strong>
-</div>
+        <div id="prizePopup" class="popup">
+            <div class="popup-content">
+                <div id="prizePopupText"></div>
+                <button class="close-button" onclick="this.parentElement.parentElement.style.display='none'">Play Again</button>
+            </div>
+        </div>
+    </div>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

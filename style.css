@@ -1,62 +1,178 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
 body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1a1c20 0%, #2d3436 100%);
+    color: #ffffff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #a0a0a0;
+    font-weight: 400;
+}
+
+.game-container {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background-color: hsl(0, 0%, 46%);
+    padding: 2rem;
+}
+
+.wheel-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    aspect-ratio: 1;
 }
 
 #canvas {
-    z-index: 1;
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
 }
 
-#spin {
+.spin-button {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;
-    background-color: rgb(255, 114, 138);
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(45deg, #FF6B6B, #FF8E53);
     border: none;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
+    border-radius: 50px;
     cursor: pointer;
-    border-radius: 20px;
-    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    transition: all 0.3s ease;
+    z-index: 2;
 }
 
-#prizePopup {
+.spin-button:hover {
+    transform: translate(-50%, -50%) scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+.spin-button:active {
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
+.popup {
     display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.75);
-    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
     justify-content: center;
     align-items: center;
+}
+
+.popup-content {
+    background: linear-gradient(135deg, #2d3436 0%, #1a1c20 100%);
+    padding: 2.5rem;
+    border-radius: 20px;
     text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: scale(0.9);
+    animation: popIn 0.3s ease forwards;
+}
+
+@keyframes popIn {
+    to {
+        transform: scale(1);
+    }
 }
 
 #prizePopupText {
-    background-color: rgb(255, 114, 138);
-    color: black;
-    padding: 20px;
-    border-radius: 10px;
-    font-weight: bold;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-@media only screen and (max-width: 768px) {
-    body {
-        flex-direction: column;
+.close-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(45deg, #4ECDC4, #2ECC71);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
     }
-    #spin {
-        top: auto;
-        bottom: 10%;
-        transform: translate(-50%, -10%);
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .game-container {
+        padding: 1rem;
+    }
+
+    .spin-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    #prizePopupText {
+        font-size: 1.5rem;
     }
 }
