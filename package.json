@@ -1,0 +1,11 @@
+{
+  "name": "mcp-server-setup",
+  "version": "1.0.0",
+  "scripts": {
+    "start-brave": "cross-env BRAVE_API_KEY=BSAYFCph1muTB4F5t5cFNIGQfv9UT8j npx @modelcontextprotocol/server-brave-search"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server-brave-search": "latest",
+    "cross-env": "^7.0.3"
+  }
+}

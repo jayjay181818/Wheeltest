@@ -1,0 +1,11 @@
+[in#1/mov,mp4,m4a,3gp,3g2,mj2 @ 00000221314717c0] Error during demuxing: Immediate exit requested
+[h264 @ 00000221336ce3c0] Invalid NAL unit size (13017 > 9760).
+[h264 @ 00000221336ce3c0] missing picture in access unit with size 9770
+[mov,mp4,m4a,3gp,3g2,mj2 @ 0000022131469e80] stream 1, offset 0x4952f2e: partial file
+[in#0/mov,mp4,m4a,3gp,3g2,mj2 @ 0000022131410c80] Error during demuxing: Immediate exit requested
+[h264 @ 0000022133789b40] Invalid NAL unit size (13017 > 9760).
+[h264 @ 0000022133789b40] Error splitting the input into NAL units.
+[vist#0:0/h264 @ 00000221340821c0] [dec:h264 @ 00000221314edb40] Decoding error: Invalid data found when processing input
+[hevc @ 0000022133f2c180] Invalid NAL unit size (65147 > 10233).
+[hevc @ 0000022133f2c180] Error splitting the input into NAL units.
+[vist#1:0/hevc @ 00000221314737c0] [dec:hevc @ 00000221314feb40] Decoding error: Invalid data found when processing input
