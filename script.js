@@ -101,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (selectedList && predefinedPrizes[selectedList]) {
             prizes = predefinedPrizes[selectedList];
             updatePrizeInputs();
+            drawWheel();
         }
     });
 
