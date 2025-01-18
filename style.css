@@ -120,14 +120,14 @@ h1 {
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
     z-index: 2;
 }
 
 .spin-button:hover {
     transform: translate(-50%, -50%) scale(1.05);
-    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
 }
 
 .spin-button:active {
@@ -187,7 +187,125 @@ h1 {
 
 .close-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.config-panel {
+background: rgba(255, 255, 255, 0.1);
+padding: 20px;
+border-radius: 15px;
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+margin-right: 30px;
+max-width: 300px;
+}
+
+.config-panel h2 {
+margin-top: 0;
+font-size: 1.2rem;
+color: var(--primary-color);
+margin-bottom: 1rem;
+}
+
+#predefinedLists {
+width: 100%;
+padding: 8px;
+border: none;
+background: rgba(255, 255, 255, 0.1);
+border-radius: 4px;
+margin-bottom: 10px;
+color: white;
+appearance: none; /* Remove default styling */
+-webkit-appearance: none; /* For Safari */
+background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+background-repeat: no-repeat;
+background-position-x: 95%;
+background-position-y: center;
+outline: none;
+}
+
+#predefinedLists:focus {
+box-shadow: 0 0 5px var(--accent-color);
+border-color: transparent;
+}
+
+#predefinedLists option {
+color: black; /* Ensure text is visible on the white background */
+}
+
+.prize-inputs {
+margin: 15px 0;
+}
+
+.prize-input {
+display: flex;
+align-items: center;
+margin-bottom: 10px;
+background: rgba(255, 255, 255, 0.1);
+border-radius: 8px;
+padding: 5px;
+}
+
+.prize-input input {
+flex: 1;
+padding: 8px;
+border: none;
+background: transparent;
+color: white;
+border-radius: 4px;
+margin-right: 5px;
+outline: none;
+}
+
+.prize-input input:focus {
+box-shadow: 0 0 5px var(--accent-color);
+}
+
+.prize-input input::placeholder {
+color: rgba(255, 255, 255, 0.5);
+}
+
+.remove-prize {
+background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+color: white;
+border: none;
+border-radius: 8px;
+width: 30px;
+height: 30px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 0;
+transition: all 0.2s ease;
+font-size: 0.8rem;
+}
+
+.remove-prize:hover {
+transform: scale(1.05);
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.add-prize, .save-prizes {
+width: 100%;
+padding: 10px;
+border: none;
+border-radius: 8px;
+background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+color: white;
+cursor: pointer;
+margin-top: 10px;
+font-weight: 500;
+transition: all 0.2s ease;
+}
+
+.add-prize:hover, .save-prizes:hover {
+transform: scale(1.02);
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.save-prizes {
+background: linear-gradient(45deg, var(--secondary-color), var(--accent-color));
 }
 
 @media (max-width: 768px) {

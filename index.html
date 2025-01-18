@@ -20,6 +20,25 @@
         </header>
         
         <main class="game-container">
+            <div class="config-panel">
+                <h2>Prize Configuration</h2>
+                <label for="predefinedLists">Example Prize Lists:</label>
+                <select id="predefinedLists">
+                    <option value="">Choose a prize list</option>
+                    <option value="default">Default</option>
+                    <option value="money">Money Prizes</option>
+                    <option value="fun">Fun Items</option>
+                </select>
+                <div class="prize-inputs">
+                    <div class="prize-input">
+                        <input type="text" class="prize-value" placeholder="Prize 1">
+                        <button class="remove-prize">×</button>
+                    </div>
+                </div>
+                <button id="addPrize" class="add-prize">Add Prize</button>
+                <button id="savePrizes" class="save-prizes">Save Prizes</button>
+            </div>
+            
             <div class="wheel-container">
                 <canvas id="canvas"></canvas>
                 <button id="spin" class="spin-button">Spin The Wheel!</button>
