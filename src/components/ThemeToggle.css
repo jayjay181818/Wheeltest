@@ -1,0 +1,67 @@
+.theme-toggle-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.theme-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.theme-select {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.3s ease;
+  backdrop-filter: var(--blur-amount);
+  -webkit-backdrop-filter: var(--blur-amount);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+}
+
+.theme-select:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--primary-color);
+}
+
+.theme-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(255, 110, 110, 0.1);
+}
+
+.theme-select option {
+  background: #1E3D59;
+  color: var(--text-primary);
+  padding: 0.5rem;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .theme-toggle-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .theme-label {
+    font-size: 0.8rem;
+  }
+  
+  .theme-select {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+}

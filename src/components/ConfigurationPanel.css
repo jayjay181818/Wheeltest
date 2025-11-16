@@ -1,0 +1,192 @@
+.config-panel {
+  background: var(--card-background);
+  backdrop-filter: var(--blur-amount);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 2rem;
+  min-width: 300px;
+  max-width: 350px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.config-panel h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+}
+
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-group select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(255, 110, 110, 0.1);
+}
+
+.form-group select option {
+  background: #1E3D59;
+  color: var(--text-primary);
+}
+
+.prize-inputs {
+  margin: 1.5rem 0;
+}
+
+.prize-inputs h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+.prize-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+.prize-input:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.prize-input input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  outline: none;
+  border-radius: 4px;
+}
+
+.prize-input input::placeholder {
+  color: var(--text-secondary);
+}
+
+.prize-input input:focus {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.remove-prize {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  line-height: 1;
+}
+
+.remove-prize:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.remove-prize:active {
+  transform: scale(0.95);
+}
+
+.add-prize {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.add-prize:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.add-prize:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.add-prize:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .config-panel {
+    min-width: 280px;
+    max-width: none;
+    width: 100%;
+    padding: 1.5rem;
+  }
+  
+  .config-panel h2 {
+    font-size: 1.3rem;
+  }
+  
+  .prize-input {
+    margin-bottom: 0.5rem;
+  }
+  
+  .prize-input input {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Animation for new prize inputs */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.prize-input {
+  animation: slideIn 0.3s ease-out;
+}

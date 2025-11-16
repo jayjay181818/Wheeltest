@@ -1,11 +1,37 @@
 {
-  "name": "mcp-server-setup",
-  "version": "1.0.0",
+  "name": "modern-spinning-wheel",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
   "scripts": {
-    "start-brave": "cross-env BRAVE_API_KEY=BSAYFCph1muTB4F5t5cFNIGQfv9UT8j npx @modelcontextprotocol/server-brave-search"
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "test": "vitest",
+    "test:ui": "vitest --ui"
   },
   "dependencies": {
-    "@modelcontextprotocol/server-brave-search": "latest",
-    "cross-env": "^7.0.3"
+    "framer-motion": "^11.15.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.18.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "eslint": "^9.18.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.13.0",
+    "jsdom": "^25.0.1",
+    "typescript": "~5.6.2",
+    "typescript-eslint": "^8.46.4",
+    "vite": "^6.0.3",
+    "vitest": "^2.1.8"
   }
 }
