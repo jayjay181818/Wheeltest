@@ -11,10 +11,11 @@
   font-weight: 500;
   color: var(--text-secondary);
   white-space: nowrap;
+  transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .theme-select {
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.2rem;
   border: 1px solid var(--card-border);
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.1);
@@ -22,7 +23,7 @@
   font-size: 0.9rem;
   cursor: pointer;
   outline: none;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: var(--blur-amount);
   -webkit-backdrop-filter: var(--blur-amount);
   appearance: none;
@@ -31,6 +32,8 @@
   background-position: right 0.7rem center;
   background-size: 1em;
   padding-right: 2.5rem;
+  min-height: 44px; /* Better touch target */
+  min-width: 150px;
 }
 
 .theme-select:hover {

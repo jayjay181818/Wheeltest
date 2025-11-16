@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
+import { useEffect } from 'react';
 import type { Prize, Theme } from '../types';
+import { haptics } from '../utils/haptics';
 import './PrizePopup.css';
 
 interface PrizePopupProps {
@@ -9,13 +11,31 @@ interface PrizePopupProps {
 }
 
 const PrizePopup = ({ prize, onClose, theme }: PrizePopupProps) => {
+  // Keyboard shortcut to close popup with Esc
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        haptics.light();
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [onClose]);
+
+  const handleClose = () => {
+    haptics.light();
+    onClose();
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="popup-overlay"
-      onClick={onClose}
+      onClick={handleClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby="prize-text"
@@ -41,7 +61,7 @@ const PrizePopup = ({ prize, onClose, theme }: PrizePopupProps) => {
           </div>
         </div>
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="popup-button"
           style={{
             background: `linear-gradient(45deg, ${theme.colors[0]}, ${theme.colors[1]})`

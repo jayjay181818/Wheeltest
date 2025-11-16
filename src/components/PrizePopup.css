@@ -26,6 +26,7 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .popup-content::before {
@@ -59,6 +60,7 @@
   color: transparent;
   margin: 0;
   animation: bounce 1s ease-in-out infinite alternate;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes bounce {
@@ -79,6 +81,7 @@
   color: var(--text-secondary);
   margin-bottom: 1rem;
   font-weight: 400;
+  transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .prize-value {
@@ -86,6 +89,7 @@
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
   animation: glow 2s ease-in-out infinite alternate;
+  transition: color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes glow {
@@ -110,6 +114,8 @@
   letter-spacing: 0.5px;
   position: relative;
   overflow: hidden;
+  min-height: 56px; /* Better touch target */
+  min-width: 180px;
 }
 
 .popup-button::before {

@@ -1,6 +1,8 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import type { Prize, Theme, SpinResult } from '../types';
+import useSwipe from '../hooks/useSwipe';
+import { haptics } from '../utils/haptics';
 import './Wheel.css';
 
 const VIEWBOX_SIZE = 400;
@@ -42,6 +44,7 @@ interface WheelProps {
 const Wheel = ({ prizes, onSpinComplete, isSpinning, theme, onSpinStart }: WheelProps) => {
   const [rotation, setRotation] = useState(0);
   const controls = useAnimation();
+  const wheelRef = useRef<HTMLDivElement>(null);
 
   const segments = useMemo(() => {
     if (!prizes.length) {
@@ -72,9 +75,12 @@ const Wheel = ({ prizes, onSpinComplete, isSpinning, theme, onSpinStart }: Wheel
 
   useEffect(() => {
     if (isSpinning) {
+      // Haptic feedback on spin start
+      haptics.heavy();
+
       const spins = 5 + Math.random() * 5; // 5-10 spins
       const finalRotation = rotation + (spins * 360);
-      
+
       void controls.start({
         rotate: finalRotation,
         transition: {
@@ -85,11 +91,14 @@ const Wheel = ({ prizes, onSpinComplete, isSpinning, theme, onSpinStart }: Wheel
       }).then(() => {
         // Update rotation state
         setRotation(finalRotation);
-        
+
         // Calculate which prize won
         const normalizedRotation = ((finalRotation % 360) + 360) % 360;
         const prizeIndex = Math.floor((360 - normalizedRotation) / (360 / prizes.length)) % prizes.length;
-        
+
+        // Haptic feedback on win
+        haptics.success();
+
         onSpinComplete({
           prize: prizes[prizeIndex],
           angle: normalizedRotation
@@ -98,8 +107,53 @@ const Wheel = ({ prizes, onSpinComplete, isSpinning, theme, onSpinStart }: Wheel
     }
   }, [isSpinning, prizes, onSpinComplete, controls, rotation]);
 
+  // Keyboard shortcuts
+  useEffect(() => {
+    const handleKeyPress = (e: KeyboardEvent) => {
+      if (e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault();
+        if (!isSpinning && prizes.length >= 2) {
+          onSpinStart();
+          haptics.light();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [isSpinning, prizes.length, onSpinStart]);
+
+  // Swipe gesture to spin
+  useSwipe({
+    onSwipeUp: () => {
+      if (!isSpinning && prizes.length >= 2) {
+        onSpinStart();
+        haptics.medium();
+      }
+    },
+    onSwipeDown: () => {
+      if (!isSpinning && prizes.length >= 2) {
+        onSpinStart();
+        haptics.medium();
+      }
+    },
+    onSwipeLeft: () => {
+      if (!isSpinning && prizes.length >= 2) {
+        onSpinStart();
+        haptics.medium();
+      }
+    },
+    onSwipeRight: () => {
+      if (!isSpinning && prizes.length >= 2) {
+        onSpinStart();
+        haptics.medium();
+      }
+    }
+  }, 60);
+
   const handleSpinClick = () => {
     if (!isSpinning && prizes.length >= 2) {
+      haptics.light();
       onSpinStart();
     }
   };
