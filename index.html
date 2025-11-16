@@ -1,58 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spinning Wheel Game</title>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Modern spinning wheel game with beautiful themes and smooth animations" />
+    <meta name="theme-color" content="#1E3D59" />
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="apple-touch-icon" href="/icon-192x192.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Spin & Win" />
+    
+    <!-- Preload fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <header>
-            <div class="header-top">
-                <button id="themeToggle" class="theme-toggle">Switch Theme</button>
-            </div>
-            <h1>Spin & Win!</h1>
-            <p class="subtitle">Try your luck and win amazing prizes</p>
-        </header>
-        
-        <main class="game-container">
-            <div class="config-panel">
-                <h2>Prize Configuration</h2>
-                <label for="predefinedLists">Example Prize Lists:</label>
-                <select id="predefinedLists">
-                    <option value="">Choose a prize list</option>
-                    <option value="default">Default</option>
-                    <option value="money">Money Prizes</option>
-                    <option value="fun">Fun Items</option>
-                </select>
-                <div class="prize-inputs">
-                    <div class="prize-input">
-                        <input type="text" class="prize-value" placeholder="Prize 1">
-                        <button class="remove-prize">×</button>
-                    </div>
-                </div>
-                <button id="addPrize" class="add-prize">Add Prize</button>
-                <button id="savePrizes" class="save-prizes">Save Prizes</button>
-            </div>
-            
-            <div class="wheel-container">
-                <canvas id="canvas"></canvas>
-                <button id="spin" class="spin-button">Spin The Wheel!</button>
-            </div>
-        </main>
-
-        <div id="prizePopup" class="popup">
-            <div class="popup-content">
-                <div id="prizePopupText"></div>
-                <button class="close-button" onclick="this.parentElement.parentElement.style.display='none'">Play Again</button>
-            </div>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
-</body>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <title>Spin & Win - Modern Spinning Wheel Game</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
